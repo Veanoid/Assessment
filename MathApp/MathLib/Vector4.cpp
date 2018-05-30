@@ -62,6 +62,21 @@ void Vector4::normalise()
 {
 }
 
+Vector4 Vector4::normalised() const
+{
+	return Vector4();
+}
+
+Vector4 Vector4::cross(const Vector4 & other) const
+{
+	return Vector4();
+}
+
+float Vector4::angleBetween(const Vector4 & other) const
+{
+	return 0.0f;
+}
+
 
 Vector4::~Vector4()
 {

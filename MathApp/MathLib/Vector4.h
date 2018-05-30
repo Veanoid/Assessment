@@ -26,6 +26,9 @@ public:
 	float magnitude() const;
 	float distance(const Vector4& other) const;
 	void normalise();
+	Vector4 normalised() const;
+	Vector4 cross(const Vector4& other) const;
+	float angleBetween(const Vector4& other)const;
 
 	~Vector4();
 };
