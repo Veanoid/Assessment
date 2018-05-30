@@ -1,3 +1,9 @@
+**/dependencies
+**/bin
+**/bootstrap
+**/.vs
+**/Debug
+**/Release
 
 # Created by https://www.gitignore.io/api/c++,windows,visualstudio
 
