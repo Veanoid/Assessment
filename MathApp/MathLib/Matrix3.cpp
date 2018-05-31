@@ -10,8 +10,8 @@ Matrix3::Matrix3()
 Matrix3::Matrix3(float xx, float xy, float xz, float yx, float yy, float yz, float zx, float zy, float zz)
 {
 	 data[0][0] = xx;
-	 data[1][0] = xy;
-	 data[2][0] = xz;
+	 data[0][1] = xy;
+	 data[0][2] = xz;
 	 data[1][0] = yx;
 	 data[1][1] = yy;
 	 data[1][2] = yz;
@@ -23,9 +23,9 @@ Matrix3::Matrix3(float xx, float xy, float xz, float yx, float yy, float yz, flo
 Matrix3::Matrix3(const Matrix3 & other)
 {
 	data[0][0] = other.data[0][0];
-	data[1][0] = other.data[1][0];
-	data[2][0] = other.data[2][0];
-	data[0][1] = other.data[0][1];
+	data[0][1] = other.data[1][0];
+	data[0][2] = other.data[2][0];
+	data[1][0] = other.data[0][1];
 	data[1][1] = other.data[1][1];
 	data[1][2] = other.data[1][2];
 	data[2][0] = other.data[2][0];

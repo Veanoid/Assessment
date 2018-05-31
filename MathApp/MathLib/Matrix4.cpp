@@ -10,10 +10,10 @@ Matrix4::Matrix4()
 Matrix4::Matrix4(float xx, float xy, float xz, float xw, float yx, float yy, float yz, float yw, float zx, float zy, float zz, float zw, float wx, float wy, float wz, float ww)
 {
 	data[0][0] = xx;
-	data[1][0] = xy;
-	data[2][0] = xz;
-	data[3][0] = xw;
-	data[0][1] = yx;
+	data[0][1] = xy;
+	data[0][2] = xz;
+	data[0][3] = xw;
+	data[1][0] = yx;
 	data[1][1] = yy;
 	data[1][2] = yz;
 	data[1][3] = yw;
@@ -30,10 +30,10 @@ Matrix4::Matrix4(float xx, float xy, float xz, float xw, float yx, float yy, flo
 Matrix4::Matrix4(const Matrix4 & other)
 {
 	data[0][0] = other.data[0][0];
-	data[1][0] = other.data[1][0];
-	data[2][0] = other.data[2][0];
-	data[3][0] = other.data[3][0];
-	data[0][1] = other.data[0][1];
+	data[0][1] = other.data[1][0];
+	data[0][2] = other.data[2][0];
+	data[0][3] = other.data[3][0];
+	data[1][0] = other.data[0][1];
 	data[1][1] = other.data[1][1];
 	data[1][2] = other.data[1][2];
 	data[1][3] = other.data[1][3];
