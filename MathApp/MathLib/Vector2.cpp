@@ -1,5 +1,5 @@
 #include "Vector2.h"
-#include <math.h>
+#include <cmath>
 
 
 
@@ -58,19 +58,19 @@ Vector2::operator const float*() const { return &m_x; }
 
 float Vector2::magnitude() const
 {
-	return sqrt(m_x *m_x + m_y * m_y);
+	return sqrtf(m_x *m_x + m_y * m_y);
 }
 
 float Vector2::distance(const Vector2 & other) const
 {
 	float diffX = m_x - other.m_x;
 	float diffY = m_y - other.m_y;
-	return sqrt(diffX * diffX + diffY * diffY);
+	return sqrtf(diffX * diffX + diffY * diffY);
 }
 
 void Vector2::normalise()
 {
-	float mag = sqrt(m_x * m_x + m_y * m_y);
+	float mag = magnitude();
 	m_x /= mag;
 	m_y /= mag;
 }

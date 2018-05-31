@@ -1,31 +1,117 @@
 #include "Matrix2.h"
 #include "Vector2.h"
+#include <cmath>
 
 
 Matrix2::Matrix2()
 {
 }
 
+Matrix2::Matrix2(float xx, float xy, float yx, float yy)
+{
+	data[0][0] = xx;
+	data[1][0] = xy;
+	data[0][1] = yx;
+	data[1][1] = yy;
+}
 
+
+Matrix2::Matrix2(const Matrix2 & other)
+{
+	data[0][0] = other.data[0][0];
+	data[1][0] = other.data[1][0];
+	data[0][1] = other.data[0][1];
+	data[1][1] = other.data[1][1];
+}
 Matrix2::~Matrix2()
 {
 }
 
-Matrix2::Matrix2(float xx, float xy, float yx, float yy)
+
+
+
+
+const Matrix2 Matrix2::identity = Matrix2(1, 0, 0, 1);
+
+
+
+const Vector2 & Matrix2::operator[](int index) const
 {
+	return axis[index];
 }
 
-Matrix2 Matrix2::operator+(const Matrix2 & other)
+Matrix2 Matrix2::operator*(const Matrix2 & other) const
 {
-	return Matrix2(m_00 + other.m_00, m_10 + other.m_10,
-					m_01 + other.m_01, m_11 + other.m_11);
+	Matrix2 result;
+
+	for (int r = 0; r < 2; r++)
+	{
+		for  (int c = 0; c < 2;  c++)
+		{
+			result.data[c][r] = data[0][r] * other.data[c][0] +
+								data[1][r] * other.data[c][1];
+		}
+	}
+	return result;
 }
 
-Matrix2 Matrix2::operator*(const Matrix2 & other)
+Vector2 Matrix2::operator*(const Vector2 & v) const
 {
-	return Matrix2(m_00 * other.m_00 + m_10 * other.m_01, m_00 * other.m_10 + m_10 * other.m_11,
-					m_01 * other.m_00 + m_11 * other.m_01, m_01 * other.m_10 + m_11 * other.m_11);
+	Vector2 result;
+
+	for (int r = 0; r < 2; r++)
+	{
+		result.data[r] = data[0][r] * v[0] +
+						data[1][r] * v[1];
+	}
+	return result;
 }
+
+Matrix2 Matrix2::transposed() const
+{
+	Matrix2 result;
+
+	for (int r = 0; r < 2; r++)
+	{
+		for (int c = 0; c < 2; c++)
+		{
+			result.data[r][c] = data[c][r];
+		}
+	}
+	return result;
+}
+
+Matrix2 Matrix2::operator=(const Matrix2 & other)
+{
+	Matrix2 result;
+	result.data[0][0] = other.data[0][0];
+	result.data[1][0] = other.data[1][0];
+	result.data[0][1] = other.data[0][1];
+	result.data[1][1] = other.data[1][1];
+	return result;
+};
+
+void Matrix2::setScaled(float x, float y)
+{
+	xAis = { x, 0 };
+	yAis = { 0, y };
+}
+
+void Matrix2::scale(float x, float y)
+{
+	Matrix2 m;
+	m.setScaled(x, y);
+
+	*this = *this * m;
+}
+
+void Matrix2::setRotate(float radians)
+{
+	xAis = { cosf(radians), -sinf(radians) };
+	yAis = { sinf(radians), cosf(radians) };
+	
+}
+
 
 
 

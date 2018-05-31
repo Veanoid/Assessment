@@ -2,7 +2,6 @@
 class Vector4
 {
 public:
-	Vector4();
 	union
 	{
 		struct { float m_x, m_y, m_z, m_w; };

@@ -1,11 +1,11 @@
 #include "Vector3.h"
-#include <math.h>
+#include <cmath>
 
 Vector3::Vector3()
 {
 }
 
-Vector3::Vector3(float m_x, float m_y, float m_z)
+Vector3::Vector3(float m_x, float m_y, float m_z) : m_x(m_x), m_y(m_y), m_z(m_z)
 {
 }
 
@@ -49,7 +49,7 @@ Vector3::operator const float*() const { return &m_x; }
 
 float Vector3::magnitude() const
 {
-	return sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+	return sqrtf(m_x * m_x + m_y * m_y + m_z * m_z);
 }
 
 float Vector3::distance(const Vector3 & other) const
@@ -57,21 +57,21 @@ float Vector3::distance(const Vector3 & other) const
 	 float diffX = m_x - other.m_x;
 	 float diffY = m_y - other.m_y;
 	 float diffZ = m_z - other.m_z;
-	 return sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ);
+	 return sqrtf(diffX * diffX + diffY * diffY + diffZ * diffZ);
 
 }
 
 void Vector3::normalise()
 {
-	float mag = sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
-	m_x ;
-	m_y	;
-	m_z	;
+	float mag = magnitude(); 
+	m_x /= mag;
+	m_y	/= mag;
+	m_z	/= mag;
 }
 
 Vector3 Vector3::normalised() const
 {
-	float mag = sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+	float mag = sqrtf(m_x * m_x + m_y * m_y + m_z * m_z);
 	return { m_x / mag, m_y / mag, m_z / mag };
 }
 

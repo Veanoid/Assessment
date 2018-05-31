@@ -7,7 +7,7 @@ Vector4::Vector4()
 {
 }
 
-Vector4::Vector4(float m_x, float m_y, float m_z, float m_w)
+Vector4::Vector4(float m_x, float m_y, float m_z, float m_w) : m_x(m_x), m_y(m_y), m_z(m_z), m_w(m_w)
 {
 }
 
@@ -54,7 +54,7 @@ Vector4::operator const float*() const { return &m_x; }
 
 float Vector4::magnitude() const
 {
-	return sqrt(m_x * m_x + m_y * m_y + m_z * m_z + m_w * m_w);
+	return sqrtf(m_x * m_x + m_y * m_y + m_z * m_z + m_w * m_w);
 }
 
 float Vector4::distance(const Vector4 & other) const
@@ -63,21 +63,21 @@ float Vector4::distance(const Vector4 & other) const
 	float diffY = m_y - other.m_y;
 	float diffZ = m_z - other.m_z;
 	float diffW = m_w - other.m_w;
-	return sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ + diffW * diffW);
+	return sqrtf(diffX * diffX + diffY * diffY + diffZ * diffZ + diffW * diffW);
 }
 
 void Vector4::normalise()
 {
-	float mag = sqrt(m_x * m_x + m_y * m_y + m_z * m_z + m_w * m_w);
-	m_x;
-	m_y;
-	m_z;
-	m_w;
+	float mag = magnitude();
+	m_x /= mag;
+	m_y /= mag;
+	m_z /= mag;
+	m_w /= mag;
 }
 
 Vector4 Vector4::normalised() const
 {
-	float mag = sqrt(m_x * m_x + m_y * m_y + m_z * m_z + m_w * m_w);
+	float mag = sqrtf(m_x * m_x + m_y * m_y + m_z * m_z + m_w * m_w);
 	return { m_x / mag, m_y / mag, m_z / mag, m_w / mag };
 }
 
@@ -86,7 +86,7 @@ Vector4 Vector4::cross(const Vector4 & other) const
 	return { m_y * other.m_z - m_z * other.m_y,
 			m_z * other.m_x - m_x * other.m_z,
 			m_x * other.m_y - m_y * other.m_x,
-			m_w};
+			0};
 }
 
 float Vector4::angleBetween(const Vector4 & other) const
