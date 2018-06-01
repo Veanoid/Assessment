@@ -26,9 +26,14 @@ Vector4 Vector4::operator*(float other)
 	return Vector4(m_x * other, m_y * other, m_z * other, m_w * other);
 }
 
-Vector4 Vector4::operator=(const Vector4 & other)
+Vector4& Vector4::operator=(const Vector4 & other)
 {
-	return Vector4(m_x = other.m_x, m_y = other.m_y, m_z = other.m_z, m_w = other.m_w);
+	m_x = other.m_x;
+	m_y = other.m_y;
+	m_z = other.m_z;
+	m_w = other.m_w;
+
+	return *this;
 }
 
 float Vector4::dot(const Vector4 & other) const
@@ -96,7 +101,7 @@ float Vector4::angleBetween(const Vector4 & other) const
 
 	float d = a.m_x * b.m_x + a.m_y * b.m_y + a.m_z * b.m_z;
 
-	return acos(d);
+	return acosf(d);
 }
 
 

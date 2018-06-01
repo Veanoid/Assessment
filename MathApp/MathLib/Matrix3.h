@@ -26,7 +26,7 @@ public:
 	Matrix3 operator * (const Matrix3& other) const;
 	Vector3 operator * (const Vector3& v) const;
 	Matrix3 transposed() const;
-	Matrix3 operator = (const Matrix3& other);
+	Matrix3& operator = (const Matrix3& other);
 
 	void setScaled(float x, float y, float z);
 	void scale(float x, float y, float z);

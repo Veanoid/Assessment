@@ -9,6 +9,7 @@ Vector2::Vector2(): m_x(0), m_y(0)
 
 Vector2::Vector2(float x, float y) : m_x(x), m_y(y)
 {
+//	float m_x(x), m_y(y);
 }
 
 
@@ -27,14 +28,17 @@ Vector2 Vector2::operator*(float other)
 	return Vector2(m_x * other, m_y * other);
 }
 
-Vector2 Vector2::operator=(const Vector2 & other)
+Vector2& Vector2::operator=(const Vector2 & other)
 {
-	return Vector2(m_x = other.m_x, m_y = other.m_y);
+	m_x = other.m_x;
+	m_y = other.m_y;
+
+	return *this;
 }
 
 float Vector2::dot(const Vector2 & other)
 {
-	return m_x * other.m_x + m_y * other.m_y;
+	return (m_x * other.m_x + m_y * other.m_y);
 }
 
 Vector2 Vector2::getPrependiularRH() const

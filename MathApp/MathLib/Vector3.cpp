@@ -24,9 +24,13 @@ Vector3 Vector3::operator*(float other)
 	return Vector3(m_x * other, m_y * other, m_z * other);
 }
 
-Vector3 Vector3::operator=(const Vector3 & other)
+Vector3& Vector3::operator=(const Vector3 & other)
 {
-	return Vector3(m_x = other.m_x, m_y = other.m_y, m_z = other.m_z);
+	m_x = other.m_x;
+	m_y = other.m_y;
+	m_z = other.m_z;
+
+	return *this;
 }
 
 float Vector3::dot(const Vector3 & other) const

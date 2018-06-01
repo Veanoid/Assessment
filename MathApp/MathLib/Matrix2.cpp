@@ -48,8 +48,8 @@ Matrix2 Matrix2::operator*(const Matrix2 & other) const
 	{
 		for  (int c = 0; c < 2;  c++)
 		{
-			result.data[c][r] = data[0][r] * other.data[c][0] +
-								data[1][r] * other.data[c][1];
+			result.data[c][r] = data[c][0] * other.data[0][r] +
+								data[c][1] * other.data[1][r];
 		}
 	}
 	return result;
@@ -61,8 +61,8 @@ Vector2 Matrix2::operator*(const Vector2 & v) const
 
 	for (int r = 0; r < 2; r++)
 	{
-		result.data[r] = data[0][r] * v[0] +
-						data[1][r] * v[1];
+		result.data[r] = data[r][0] * v[0] +
+						data[r][1] * v[1];
 	}
 	return result;
 }
@@ -81,14 +81,13 @@ Matrix2 Matrix2::transposed() const
 	return result;
 }
 
-Matrix2 Matrix2::operator=(const Matrix2 & other)
+Matrix2& Matrix2::operator=(const Matrix2 & other)
 {
-	Matrix2 result;
-	result.data[0][0] = other.data[0][0];
-	result.data[1][0] = other.data[1][0];
-	result.data[0][1] = other.data[0][1];
-	result.data[1][1] = other.data[1][1];
-	return result;
+	data[0][0] = other.data[0][0];
+	data[1][0] = other.data[1][0];
+	data[0][1] = other.data[0][1];
+	data[1][1] = other.data[1][1];
+	return *this;
 };
 
 void Matrix2::setScaled(float x, float y)

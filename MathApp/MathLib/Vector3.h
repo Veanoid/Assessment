@@ -13,7 +13,7 @@ public:
 	Vector3 operator  +(const Vector3& other);
 	Vector3 operator  -(const Vector3& other);
 	Vector3 operator *(float other);
-	Vector3 operator = (const Vector3& other);
+	Vector3& operator = (const Vector3& other);
 
 	float dot(const Vector3& other)const;
 

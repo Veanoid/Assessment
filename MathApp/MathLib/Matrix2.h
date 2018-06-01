@@ -26,7 +26,7 @@ public:
 	Matrix2 operator * (const Matrix2& other) const;
 	Vector2 operator * (const Vector2& v) const;
 	Matrix2 transposed() const;
-	Matrix2 operator = (const Matrix2& other);
+	Matrix2& operator = (const Matrix2& other);
 
 	void setScaled(float x, float y);
 	void scale(float x, float y);

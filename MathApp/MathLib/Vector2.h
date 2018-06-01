@@ -16,7 +16,7 @@ public:
 
 	friend Vector2 operator *(const float scalar, const Vector2 a_vec );
 
-	Vector2 operator = (const Vector2& other); // making a vector and another vector\
+	Vector2& operator = (const Vector2& other); // making a vector and another vector\
 
 	float dot(const Vector2& other);
 
