@@ -10,26 +10,26 @@ Matrix3::Matrix3()
 Matrix3::Matrix3(float xx, float xy, float xz, float yx, float yy, float yz, float zx, float zy, float zz)
 {
 	 data[0][0] = xx;
-	 data[1][0] = xy;
-	 data[2][0] = xz;
-	 data[0][1] = yx;
+	 data[0][1] = xy;
+	 data[0][2] = xz;
+	 data[1][0] = yx;
 	 data[1][1] = yy;
-	 data[2][1] = yz;
-	 data[0][2] = zx;
-	 data[1][2] = zy;
+	 data[1][2] = yz;
+	 data[2][0] = zx;
+	 data[2][1] = zy;
 	 data[2][2] = zz;
 }
 
 Matrix3::Matrix3(const Matrix3 & other)
 {
 	data[0][0] = other.data[0][0];
-	data[0][1] = other.data[0][1];
-	data[0][2] = other.data[0][2];
 	data[1][0] = other.data[1][0];
-	data[1][1] = other.data[1][1];
-	data[1][2] = other.data[1][2];
 	data[2][0] = other.data[2][0];
+	data[0][1] = other.data[0][1];
+	data[1][1] = other.data[1][1];
 	data[2][1] = other.data[2][1];
+	data[0][2] = other.data[0][2];
+	data[1][2] = other.data[1][2];
 	data[2][2] = other.data[2][2];
 }
 
@@ -50,9 +50,10 @@ Matrix3 Matrix3::operator*(const Matrix3 & other) const
 	{
 		for (int c = 0; c < 3; c++)
 		{
-			result.data[r][c] = data[r][0] * other.data[0][c] +
-								data[r][1] * other.data[1][c] +
-								data[r][2] * other.data[2][c];
+			result.data[r][c] = 
+				data[0][c] * other.data[r][0] +
+				data[1][c] * other.data[r][1] +
+				data[2][c] * other.data[r][2];
 		}
 	}
 	return result;
@@ -64,9 +65,9 @@ Vector3 Matrix3::operator*(const Vector3 & v) const
 
 	for (int r = 0; r < 3; r++)
 	{
-		result.data[r] = data[r][0] * v[0] +
-						data[r][1] * v[1] +
-						data[r][2] * v[2];
+		result.data[r] = data[0][r] * v[0] +
+			data[1][r] * v[1] +
+			data[2][r] * v[2];
 	}
 	return result;
 }
@@ -120,23 +121,23 @@ void Matrix3::scale(float x, float y, float z)
 void Matrix3::setRotateX(float radians)
 {
 	xAis = { 1, 0, 0 };
-	yAis = { 0, cosf(radians), -sinf(radians) };
-	zAis = { 0,  sinf(radians), cosf(radians) };
+	yAis = { 0, cosf(radians), sinf(radians) };
+	zAis = { 0,  -sinf(radians), cosf(radians) };
 
 }
 
 void Matrix3::setRotateY(float radians)
 {
-	xAis = { cosf(radians), 0,  sinf(radians) };
+	xAis = { cosf(radians), 0,  -sinf(radians) };
 	yAis = { 0, 1, 0 };
-	zAis = { -sinf(radians),  0, cosf(radians) };
+	zAis = { sinf(radians),  0, cosf(radians) };
 
 }
 
 void Matrix3::setRotateZ(float radians)
 {
-	xAis = { cosf(radians), -sinf(radians), 0 };
-	yAis = { sinf(radians), cosf(radians), 0 };
+	xAis = { cosf(radians), sinf(radians), 0 };
+	yAis = { -sinf(radians), cosf(radians), 0 };
 	zAis = { 0,  0, 1 };
 
 }
