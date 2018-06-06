@@ -151,3 +151,8 @@ void Matrix3::setEuler(float pitch, float yaw, float roll)
 
 	*this = z * y * x;
 }
+
+void Matrix3::translate(float x, float y, float z)
+{
+	translation = translation + Vector3(x, y, z);
+}

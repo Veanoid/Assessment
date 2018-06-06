@@ -119,18 +119,18 @@ Matrix4& Matrix4::operator=(const Matrix4 & other)
 	return *this;
 }
 
-void Matrix4::setScaled(float x, float y, float z, float w)
+void Matrix4::setScaled(float x, float y, float z)
 {
 	xAis = { x, 0, 0, 0 };
 	yAis = { 0, y, 0, 0 };
 	zAis = { 0, 0, z, 0 };
-	wAis = { 0, 0, 0, w };
+	translastion = { 0, 0, 0, 1 };
 }
 
 void Matrix4::scale(float x, float y, float z, float w)
 {
 	Matrix4 m;
-	m.setScaled(x, y, z, w);
+	m.setScaled(x, y, z);
 
 	*this = *this * m;
 }
@@ -140,7 +140,7 @@ void Matrix4::setRotateX(float radians)
 	xAis = { 1, 0, 0, 0 };
 	yAis = { 0, cosf(radians), sinf(radians), 0 };
 	zAis = { 0,  -sinf(radians), cosf(radians), 0 };
-	wAis = { 0, 0, 0, 1 };
+	translastion = { 0, 0, 0, 1 };
 
 }
 
@@ -149,7 +149,7 @@ void Matrix4::setRotateY(float radians)
 	xAis = { cosf(radians), 0,  -sinf(radians), 0 };
 	yAis = { 0, 1, 0, 0 };
 	zAis = { sinf(radians),  0, cosf(radians), 0 };
-	wAis = { 0, 0, 0, 1 };
+	translastion = { 0, 0, 0, 1 };
 }
 
 void Matrix4::setRotateZ(float radians)
@@ -157,8 +157,13 @@ void Matrix4::setRotateZ(float radians)
 	xAis = { cosf(radians), sinf(radians), 0, 0 };
 	yAis = { -sinf(radians), cosf(radians), 0, 0 };
 	zAis = { 0,  0, 1, 0 };
-	wAis = { 0, 0, 0, 1 };
+	translastion = { 0, 0, 0, 1 };
 
+}
+
+void Matrix4::translate(float x, float y, float z)
+{
+	translastion = translastion + Vector4(x, y, z, 0);
 }
 
 

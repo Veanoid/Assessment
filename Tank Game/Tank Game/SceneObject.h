@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <assert.h>
-
+#include <Matrix3.h>
 
 namespace aie
 {
@@ -58,6 +58,52 @@ public:
 		for (auto child : m_children)
 			child->draw(renderer);
 	}
+
+	const Matrix3& SceneObject::getLocalTransform() const {
+		return m_localTransform;
+	}
+
+	const Matrix3& SceneObject::getGlobaTransform() const {
+		return m_globlaTransform;
+	}
+
+	void SceneObject::updateTransform() {
+		if (m_parent != nullptr)
+			m_globlaTransform = m_parent->m_globlaTransform *
+			m_localTransform;
+
+		else
+			m_globlaTransform = m_localTransform;
+
+		for (auto child : m_children)
+			child->updateTransform();
+	}
+
+	void SceneObject::setPostion(float x, float y) {
+		m_localTransform[2] = { x, y, 1 };
+		updateTransform();
+	}
+
+	void SceneObject::setRotate(float radians) {
+		m_localTransform.setRotateZ(radians);
+		updateTransform();
+	}
+
+	void SceneObject::setScale(float x, float y) {
+		m_localTransform.translate(x, y, 1);
+		updateTransform();
+	}
+
+	void SceneObject::setRotate(float radians) {
+		m_localTransform.rotateZ(radians);
+		updateTransform();
+	}
+
+	void SceneObject::Scale(float width, float height) {
+		m_localTransform.scale(width, height, 1);
+		updateTransform();
+	}
+
 protected:
 
 	SceneObject * m_parent = nullptr;
