@@ -14,7 +14,6 @@ public:
 			Vector3 xAis;
 			Vector3 yAis;
 			Vector3 zAis;
-			Vector3 translation;
 		};
 		Vector3 axis[3];
 		float data[3][3];
@@ -37,5 +36,8 @@ public:
 	void setEuler(float pitch, float yaw, float roll);
 	void translate(float x, float y, float z);
 
+	void rotateX(float radians);
+	void rotateY(float radians);
+	void rotateZ(float radians);
 };
 

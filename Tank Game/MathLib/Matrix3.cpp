@@ -33,6 +33,10 @@ Matrix3::Matrix3(const Matrix3 & other)
 	data[2][2] = other.data[2][2];
 }
 
+const Matrix3 Matrix3::identity = Matrix3(1, 0, 0,
+										0, 1, 0,
+										0, 0, 1);
+
 
 Matrix3::~Matrix3()
 {
@@ -154,5 +158,29 @@ void Matrix3::setEuler(float pitch, float yaw, float roll)
 
 void Matrix3::translate(float x, float y, float z)
 {
-	translation = translation + Vector3(x, y, z);
+	zAis = zAis + Vector3(x, y, z);
+}
+
+void Matrix3::rotateX(float radians)
+{
+	Matrix3 m;
+	m.setRotateX(radians);
+
+	*this = *this * m;
+}
+
+void Matrix3::rotateY(float radians)
+{
+	Matrix3 m;
+	m.setRotateY(radians);
+
+	*this = *this * m;
+}
+
+void Matrix3::rotateZ(float radians)
+{
+	Matrix3 m;
+	m.setRotateZ(radians);
+
+	*this = *this * m;
 }

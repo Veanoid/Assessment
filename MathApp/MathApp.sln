@@ -6,14 +6,12 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathApp", "MathApp\MathApp.vcxproj", "{25A47AB1-C60A-4D9A-812F-5AC473098026}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FACFAA69-26C4-42A8-8999-7D4EC4EC9D35} = {FACFAA69-26C4-42A8-8999-7D4EC4EC9D35}
+		{02425FB5-E15F-4B7D-84FC-DA0B04920551} = {02425FB5-E15F-4B7D-84FC-DA0B04920551}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLib", "MathLib\MathLib.vcxproj", "{FACFAA69-26C4-42A8-8999-7D4EC4EC9D35}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "..\..\..\..\Downloads\UnitTest\UnitTest\UnitTest.vcxproj", "{02425FB5-E15F-4B7D-84FC-DA0B04920551}"
-	ProjectSection(ProjectDependencies) = postProject
-		{FACFAA69-26C4-42A8-8999-7D4EC4EC9D35} = {FACFAA69-26C4-42A8-8999-7D4EC4EC9D35}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest\UnitTest\UnitTest.vcxproj", "{02425FB5-E15F-4B7D-84FC-DA0B04920551}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
