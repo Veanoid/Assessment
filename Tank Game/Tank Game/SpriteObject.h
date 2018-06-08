@@ -21,5 +21,6 @@ public:
 
 protected:
 	aie::Texture* m_texture = nullptr;
+	Vector3 offset;
 };
 

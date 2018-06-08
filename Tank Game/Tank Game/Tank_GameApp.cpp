@@ -21,9 +21,16 @@ bool Tank_GameApp::startup() {
 
 
 	m_tank.load("../bin/textures/MegaTank.png", 0, 0);
-	m_turret.load("../bin/textures/MegaTurret.png", 0, 4);
+	m_turret.load("../bin/textures/MegaTurret.png", 0, 1);
 	m_tank.addChild(&m_turret);
 	m_tank.setPostion(getWindowHeight() / 2.f, getWindowWidth() / 2.f);
+
+	m_velocity = Vector3(0, 0, 0);
+	m_acceleration = Vector3(0, 0, 0);
+	m_mass = 1000;
+	m_forceTotal = Vector3(0, 0, 0);
+	m_drag = Vector3(0, 2, 0);
+	m_speed = 5;
 
 	return true;
 }
@@ -45,28 +52,100 @@ void Tank_GameApp::update(float deltaTime) {
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
+	m_Direction = m_tank.getLocalTransform().axis[1];
 
 	if (input->isKeyDown(aie::INPUT_KEY_A))
 		m_tank.rotate(deltaTime);
 	if (input->isKeyDown(aie::INPUT_KEY_D))
 		m_tank.rotate(-deltaTime);
 
-	if (input->isKeyDown(aie::INPUT_KEY_W)) {
-		auto facing = m_tank.getLocalTransform().axis[1];
-		facing = facing * deltaTime * 100;
-		m_tank.translate(facing.m_x, facing.m_y);
+	if (input->isKeyDown(aie::INPUT_KEY_W)) 
+	{
+
+		m_forceTotal = m_Direction * m_speed;
+
+
+
+		//if (m_speed < m_topspeed)
+		//{
+		//	m_speed = m_speed += m_acceleration;
+		//	auto velocity = Vector3(0, 0, 0);
+		//	velocity = velocity + m_speed * deltaTime * m_tank.getLocalTransform().axis[1];
+		//	m_tank.translate(velocity.m_x, velocity.m_y);
+		//}
+		//else
+		//{
+		//	m_speed = m_topspeed;
+		//	auto velocity = m_speed * deltaTime * m_tank.getLocalTransform().axis[1];
+		//	m_tank.translate(velocity.m_x, velocity.m_y);
+		//}
+				
+	}
+	if (input->isKeyUp(aie::INPUT_KEY_W && aie::INPUT_KEY_S))
+	{
+		//if (m_speed != 0)
+		//{
+		//	if (m_speed > 0)
+		//	{
+		//		m_speed -= m_acceleration;
+		//		auto velocity = m_speed * deltaTime * m_tank.getLocalTransform().axis[1];
+		//		m_tank.translate(velocity.m_x, velocity.m_y);
+		//	}
+		//	if (m_speed < 0)
+		//	{
+		//		m_speed += m_acceleration;
+		//		auto velocity = m_speed * deltaTime * m_tank.getLocalTransform().axis[1];
+		//		m_tank.translate(velocity.m_x, velocity.m_y);
+		//	}
+		//	if (m_speed <5 && m_speed > -5)
+		//	{
+		//		m_speed = 0;
+		//	}
+		//	
+		//	
+		//	auto velocity = m_speed * deltaTime * m_tank.getLocalTransform().axis[1];
+		//	m_tank.translate(velocity.m_x, velocity.m_y);
+		//	
+		//}
 	}
 	if (input->isKeyDown(aie::INPUT_KEY_S)) {
-		auto facing = m_tank.getLocalTransform().axis[1];
-		facing = facing * deltaTime * -100;
-		m_tank.translate(facing.m_x, facing.m_y );
+
+
+
+		m_forceTotal = m_Direction* -1.0f * m_speed;
+
+
+
+
+
+		//if (m_speed > -m_topspeed)
+		//{
+		//	m_speed -= m_acceleration;
+		//	auto velocity = m_speed * deltaTime * m_tank.getLocalTransform().axis[1];
+		//	m_tank.translate(velocity.m_x, velocity.m_y);
+		//}
+		//else
+		//{
+		//	m_speed = -m_topspeed;
+		//	auto velocity = m_speed * deltaTime * m_tank.getLocalTransform().axis[1];
+		//	m_tank.translate(velocity.m_x, velocity.m_y);
+		//}
 	}
+
+
+
 
 	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
 		m_turret.rotate(deltaTime);
 	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
 		m_turret.rotate(-deltaTime);
+	
+	m_forceTotal = m_forceTotal - m_drag;
 
+	m_acceleration = m_forceTotal/* / m_mass*/;
+	m_velocity = m_velocity + m_acceleration * deltaTime;
+
+	m_tank.translate(m_velocity.m_x, m_velocity.m_y);
 }
 
 void Tank_GameApp::draw() {
