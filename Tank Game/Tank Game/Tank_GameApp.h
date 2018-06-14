@@ -16,6 +16,7 @@ public:
 	virtual void update(float deltaTime);
 	virtual void draw();
 
+	void addforce(Vector3 force);
 	
 
 protected:
