@@ -19,7 +19,8 @@ SeekBehavior::~SeekBehavior()
 void SeekBehavior::update(float deltaTiem, GameObject * agent)
 {
 	Vector2 desiredVel = target->position - agent->position;
-	desiredVel = glm::normalize(desiredVel) * 100.0f;
+	desiredVel.normalise();
+	desiredVel = desiredVel * 100.0f;
 	Vector2 force = desiredVel - agent->velocity;
 	agent->Addforce(force);
 }

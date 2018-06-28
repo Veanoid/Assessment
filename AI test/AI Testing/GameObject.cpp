@@ -7,32 +7,32 @@ GameObject::GameObject()
 {
 }
 
-GameObject::GameObject(aie::Texture * texture, glm::vec2 pos)
+GameObject::GameObject(aie::Texture * texture, Vector2 pos)
 {
-	this->texture = texture;
-	this->position = pos;
-	velocity = glm::vec2(0, 0);
-	acceleration = glm::vec2(0, 0);
+	this->texture = texture; // setting the texture
+	this->position = pos; // setting the postion
+	velocity = Vector2(0, 0); // setting the velocity 
+	acceleration = Vector2(0, 0); // setting the acceleration
 
 }
 
-
+// for loop for deleting 
 GameObject::~GameObject()
 {
-	delete texture;
-	for (int i = 0; i < m_behaviours.size(); i++)
+	delete texture; // deleting the texture
+	for (int i = 0; i < m_behaviours.size(); i++) // going through all behaviours in the list
 	{
-		delete m_behaviours[i];
+		delete m_behaviours[i];// deleting the current array 
 	}
 
 }
-
+// updating 
 void GameObject::update(float deltaTime)
 {
-	Addforce(velocity * -0.15f);
-	velocity += acceleration * deltaTime;
-	position += velocity * deltaTime;
-	acceleration = glm::vec2(0, 0);
+	Addforce(velocity * -0.15f); // settign the addforce 
+	velocity + acceleration, velocity = acceleration * deltaTime;
+	position + velocity, position = velocity * deltaTime;
+	acceleration = Vector2(0, 0);
 
 	for ( int i = 0; i < m_behaviours.size(); i++)
 	{
@@ -42,12 +42,12 @@ void GameObject::update(float deltaTime)
 
 void GameObject::draw(aie::Renderer2D* renderer)
 {
-	renderer->drawSprite(texture, position.x, position.y);
+	renderer->drawSprite(texture, position.m_x, position.m_y);
 }
 
-void GameObject::Addforce(glm::vec2 force)
+void GameObject::Addforce(Vector2 force)
 {
-	acceleration += force;
+	acceleration + force, acceleration = force;
 }
 
 void GameObject::AddBehaviour(IBehaviour * behavior)

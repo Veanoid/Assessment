@@ -1,5 +1,5 @@
 #include "FeelBehavior.h"
-#include <glm\ext.hpp>
+#include <Vector2.h>
 
 
 
@@ -20,8 +20,9 @@ FeelBehavior::~FeelBehavior()
 
 void FeelBehavior::update(float deltaTiem, GameObject * agent)
 {
-	glm::vec2 desiredVel =  agent->position - target->position;
-	desiredVel = glm::normalize(desiredVel) * 100.0f;
-	glm::vec2 force = desiredVel - agent->velocity;
+	Vector2 desiredVel =  agent->position + target->position;
+	desiredVel.normalise();
+	desiredVel = desiredVel * 100.0f;
+	Vector2 force = desiredVel - agent->velocity;
 	agent->Addforce(force);
 }
