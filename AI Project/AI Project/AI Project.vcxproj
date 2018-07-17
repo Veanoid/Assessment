@@ -164,7 +164,7 @@
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="AI_ProjectApp.cpp" />
-    <ClCompile Include="Fleebehaciour.cpp" />
+    <ClCompile Include="Evade.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Seekbehaviour.cpp" />
     <ClCompile Include="Wander.cpp" />
@@ -172,7 +172,7 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AI_ProjectApp.h" />
-    <ClInclude Include="Fleebehaciour.h" />
+    <ClInclude Include="Evade.h" />
     <ClInclude Include="Seekbehaviour.h" />
     <ClInclude Include="Wander.h" />
   </ItemGroup>
