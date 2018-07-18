@@ -16,7 +16,7 @@ Seekbehaviour::~Seekbehaviour()
 {
 }
 
-Vector2 Seekbehaviour::update(float deltaTime, Agent* agent)
+void Seekbehaviour::update(float deltaTime, Agent* agent)
 {
 	Vector2 desiredVel = target->position - agent->position;
 	desiredVel.normalise();

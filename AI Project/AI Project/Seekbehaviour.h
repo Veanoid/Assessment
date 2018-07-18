@@ -7,7 +7,7 @@ public:
 	Seekbehaviour();
 	Seekbehaviour(Agent* target);
 	~Seekbehaviour();
-	Vector2 update(float deltaTime, Agent* agent);
+	void update(float deltaTime, Agent* agent);
 
 private:
 	Agent* target;
