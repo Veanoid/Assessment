@@ -1,13 +1,14 @@
 #pragma once
 #include "Agent.h"
 #include <Vector2.h>
-class Pursuit
+#include "State.h"
+class Pursuit : public state
 {
 public:
 	Pursuit();
 	Pursuit(Agent* target);
 	~Pursuit();
-	void update(float deltaTime, Agent* Agent);
+	virtual void update(float deltaTime, Agent* Agent);
 
 private:
 	Agent * target;

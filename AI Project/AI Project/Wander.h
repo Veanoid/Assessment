@@ -1,21 +1,28 @@
 #pragma once
 #include <Matrix2.h>
 #include <Vector2.h>
-class Wander
+#include "State.h"
+class Wander : public state
 {
 public:
 	Wander();
+	Wander(Agent* target, float distance, float radius, float amount);
+	virtual void update(Agent* agent, StateMachine* sm, float deltaTime);
+	void setAngle(Vector2 vec, float value);
 	~Wander();
 
 private:
 	// move radius
-	double      m_Radius;
+	double      m_radius;
 	// move distance
-	double      m_Distance;
+	double      m_distance;
 	// move amount
 	double      m_amount;
-	// move target
-	int			m_target;
+	// move angle
+	int			m_angle;
+
+	Vector2 randomVec;
+	Agent * m_target;
 
 
 };		       

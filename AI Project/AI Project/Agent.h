@@ -11,7 +11,6 @@ class Agent
 public:
 	Agent();
 	Agent(aie::Texture* texture, Vector2 pos);
-	~Agent();
 
 	void update(float deltaTime);
 	void draw(aie::Renderer2D* renderer);
@@ -20,9 +19,12 @@ public:
 	Vector2 position;
 	Vector2 velocity;
 	Vector2 acceleration;
+	Vector2 Getpostion();
 
 	float maxFoce;
 	float maxVelocity;
+
+	~Agent();
 
 private:
 	aie::Texture* texture;

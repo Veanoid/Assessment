@@ -168,14 +168,18 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pursuit.cpp" />
     <ClCompile Include="Seekbehaviour.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Wander.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AI_ProjectApp.h" />
     <ClInclude Include="Evade.h" />
+    <ClInclude Include="IBehaviour.h" />
     <ClInclude Include="Pursuit.h" />
     <ClInclude Include="Seekbehaviour.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Wander.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -39,3 +39,8 @@ void Agent::Addforce(Vector2 force)
 {
 	acceleration + force, acceleration = force;
 }
+
+Vector2 Agent::Getpostion()
+{
+	return position;
+}

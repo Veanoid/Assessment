@@ -14,6 +14,7 @@ Seekbehaviour::Seekbehaviour(Agent * target)
 
 Seekbehaviour::~Seekbehaviour()
 {
+	delete target;
 }
 
 void Seekbehaviour::update(float deltaTime, Agent* agent)
