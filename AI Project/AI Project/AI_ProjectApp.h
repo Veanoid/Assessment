@@ -2,7 +2,10 @@
 
 #include "Application.h"
 #include "Renderer2D.h"
-
+#include "Agent.h"
+#include "Pursuit.h"
+#include "Evade.h"
+class StateMachine;
 class AI_ProjectApp : public aie::Application {
 public:
 
@@ -19,4 +22,9 @@ protected:
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
+	Agent*				m_player;
+	Agent*				m_gaurd;
+	StateMachine*		m_playerStateMachine;
+	StateMachine*		m_enemySM;
+
 };

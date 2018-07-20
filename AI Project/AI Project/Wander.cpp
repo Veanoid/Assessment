@@ -38,12 +38,12 @@ void Wander::update(Agent * agent, StateMachine * sm, float deltaTime)
 
 	agent->Addforce(force);
 
-	Vector2 dist = m_target->Getpostion() - agent->Getpostion();
-	float mag = dist.magnitude();
-	if (mag < 100.0f)
-	{
-		sm->ChangeState(agent, new Pursuit(m_target));
-	}
+	// Vector2 dist = m_target->Getpostion() - agent->Getpostion();
+	// float mag = dist.magnitude();
+	// if (mag < 100.0f)
+	// {
+	// 	sm->ChangeState(agent, new Pursuit(m_target));
+	// }
 }
 
 void Wander::setAngle(Vector2 vec, float value)

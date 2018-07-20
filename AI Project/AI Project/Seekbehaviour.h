@@ -1,8 +1,8 @@
 #pragma once
 #include "Agent.h"
 #include <Vector2.h>
-#include "IBehaviour.h"
-class Seekbehaviour : public IBehaviour
+#include "State.h"
+class Seekbehaviour : public state
 {
 public:
 	Seekbehaviour();

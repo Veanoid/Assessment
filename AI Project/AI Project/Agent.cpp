@@ -1,6 +1,6 @@
 #include "Agent.h"
 #include <Renderer2D.h>
-
+#include"IBehaviour.h"
 
 
 Agent::Agent()
@@ -25,9 +25,12 @@ Agent::~Agent()
 void Agent::update(float deltaTime)
 {
 	Addforce(velocity * -0.15f);
-	velocity + acceleration, velocity = acceleration * deltaTime;
-	position + velocity, position = velocity * deltaTime;
+	velocity = velocity + acceleration * deltaTime;
+	position = position + velocity * deltaTime;
 	acceleration = Vector2(0, 0);
+
+	if (m_behaviours.size() > 0)
+		m_behaviours[0]->update(this, deltaTime);
 }
 
 void Agent::draw(aie::Renderer2D* renderer)
@@ -35,9 +38,14 @@ void Agent::draw(aie::Renderer2D* renderer)
 	renderer->drawSprite(texture, position.m_x, position.m_y);
 }
 
+void Agent::Addbehaviour(IBehaviour * state)
+{
+	m_behaviours.push_back(state);
+}
+
 void Agent::Addforce(Vector2 force)
 {
-	acceleration + force, acceleration = force;
+	acceleration = acceleration + force;
 }
 
 Vector2 Agent::Getpostion()

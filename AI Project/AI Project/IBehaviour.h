@@ -4,5 +4,5 @@
 class IBehaviour
 {
 public:
-	virtual void update(float deltaTime, Agent* Agent) = 0;
+	virtual void update(Agent* agent, float deltaTime) = 0;
 };

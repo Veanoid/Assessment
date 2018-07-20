@@ -5,7 +5,7 @@ class StateMachine : public IBehaviour
 {
 public:
 	StateMachine();
-	virtual void update(Agent* agent, float deltaTime);
+	void update(Agent* agent, float deltaTime);
 	void ChangeState(Agent* agent, state* newState);
 	state* getCurrentState();
 	state* getPrevState();
