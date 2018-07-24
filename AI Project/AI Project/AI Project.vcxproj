@@ -165,6 +165,9 @@
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="AI_ProjectApp.cpp" />
     <ClCompile Include="Evade.cpp" />
+    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="GraphEdge.cpp" />
+    <ClCompile Include="GraphNode.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pursuit.cpp" />
     <ClCompile Include="Seekbehaviour.cpp" />
@@ -175,6 +178,9 @@
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AI_ProjectApp.h" />
     <ClInclude Include="Evade.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="GraphEdge.h" />
+    <ClInclude Include="GraphNode.h" />
     <ClInclude Include="IBehaviour.h" />
     <ClInclude Include="Pursuit.h" />
     <ClInclude Include="Seekbehaviour.h" />
