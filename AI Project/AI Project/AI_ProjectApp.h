@@ -6,6 +6,7 @@
 #include "Pursuit.h"
 #include "Evade.h"
 class StateMachine;
+class Graph;
 class AI_ProjectApp : public aie::Application {
 public:
 
@@ -26,5 +27,6 @@ protected:
 	Agent*				m_gaurd;
 	StateMachine*		m_playerStateMachine;
 	StateMachine*		m_enemySM;
+	Graph*				m_graph;
 
 };

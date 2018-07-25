@@ -7,18 +7,19 @@ class GraphNode
 {
 public:
 	GraphNode();
+	// value of the nodes
 	void SetPosition(Vector2 position);
 	Vector2 GetPosition();
-
+	// setting it to visted
 	void SetVisited(bool Visited);
 	bool GetVisited();
-
+	// adds connections together
 	void AddConnections(GraphNode * node, GraphNode* target, float cost);
 	std::vector<GraphEdge*> GetConnections();
-
+	// sets a parent
 	void SetParent(GraphNode* node);
 	GraphNode* GetParent();
-
+	// g score 
 	void SetGScore(float gScore);
 	float GetGScore();
 

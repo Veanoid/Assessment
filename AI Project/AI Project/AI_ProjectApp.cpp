@@ -3,6 +3,7 @@
 #include "Font.h"
 #include "Input.h"
 #include "StateMachine.h"
+#include "Graph.h"
 
 AI_ProjectApp::AI_ProjectApp() {
 
@@ -18,6 +19,17 @@ bool AI_ProjectApp::startup() {
 	m_playerStateMachine = new StateMachine();
 	m_enemySM = new StateMachine();
 
+	m_graph = new Graph();
+	GraphNode* newNode = new GraphNode();
+	m_graph->AddNode(newNode);
+	m_graph->AddNode(newNode);
+	m_graph->AddNode(newNode);
+	m_graph->AddNode(newNode);
+	m_graph->AddNode(newNode);
+	m_graph->AddNode(newNode);
+	m_graph->GetNodes()[0]->SetPosition(Vector2 (100, 200));
+	m_graph->GetNodes()[1]->SetPosition(Vector2(300, 500));
+	m_graph->ConnectNode(m_graph->GetNodes()[0], m_graph->GetNodes()[1], 10);
 
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"
