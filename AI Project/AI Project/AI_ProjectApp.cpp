@@ -20,16 +20,37 @@ bool AI_ProjectApp::startup() {
 	m_enemySM = new StateMachine();
 
 	m_graph = new Graph();
-	GraphNode* newNode = new GraphNode();
-	m_graph->AddNode(newNode);
-	m_graph->AddNode(newNode);
-	m_graph->AddNode(newNode);
-	m_graph->AddNode(newNode);
-	m_graph->AddNode(newNode);
-	m_graph->AddNode(newNode);
-	m_graph->GetNodes()[0]->SetPosition(Vector2 (100, 200));
-	m_graph->GetNodes()[1]->SetPosition(Vector2(300, 500));
-	m_graph->ConnectNode(m_graph->GetNodes()[0], m_graph->GetNodes()[1], 10);
+
+	for (int i = 0; i < 50; i++)
+	{
+		for (int j = 0; j < 50; j++)
+		{
+			GraphNode* yeet = new GraphNode(); 
+			yeet->SetPosition(Vector2(i * 32, j * 32));
+			m_graph->AddNode(yeet);
+		}
+	}
+
+	for (auto x : m_graph->GetNodes()) {
+		for (auto y : m_graph->GetNodes()) {
+			if (x == y) {
+				continue;
+			}
+			//int xDist = x->GetPosition().m_x - y->GetPosition().m_x; 
+			//int yDist = x->GetPosition().m_y - y->GetPosition().m_y;
+
+			Vector2 dist = y->GetPosition() - x->GetPosition();
+			float length = dist.magnitude();
+
+			if (length <= 50.0f)
+			{
+				// connect x and y node
+				m_graph->ConnectNode(x, y, length);
+			}
+
+
+		}
+	}
 
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"
@@ -73,6 +94,7 @@ void AI_ProjectApp::draw() {
 	// draw your stuff here!
 	m_player->draw(m_2dRenderer);
 	m_gaurd->draw(m_2dRenderer);
+	m_graph->draw(m_2dRenderer);
 
 	// output some text, uses the last used colour
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);

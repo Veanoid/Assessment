@@ -17,8 +17,6 @@ public:
 	std::vector<GraphNode*> BFS(GraphNode* startNode, GraphNode* endNode); // Breadth first search = BFS
 	std::vector<GraphNode*> DjikstraSearch(GraphNode* startNode, GraphNode* endNode); // Djikstra
 	void draw(aie::Renderer2D* renderer);// draws the node
-
-
 	~Graph();
 private:
 	std::vector<GraphNode*> m_nodes;

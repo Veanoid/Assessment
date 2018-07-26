@@ -8,11 +8,12 @@ GraphEdge::GraphEdge()
 
 void GraphEdge::SetNode(GraphNode * node)
 {
+	target = node;
 }
 
 GraphNode * GraphEdge::GetNode()
 {
-	return nullptr;
+	return target;
 }
 
 void GraphEdge::SetCost(float cost)
