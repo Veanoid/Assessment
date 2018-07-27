@@ -22,6 +22,7 @@ Vector2 GraphNode::GetPosition()
 
 void GraphNode::SetVisited(bool Visited)
 {
+	m_isVisited = Visited;
 }
 
 bool GraphNode::GetVisited()
@@ -65,7 +66,14 @@ float GraphNode::GetGScore()
 
 bool GraphNode::CompareGScore(GraphNode * a, GraphNode * b)
 {
-	return false;
+	if (a >  b )
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 

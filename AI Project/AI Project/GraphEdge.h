@@ -10,11 +10,11 @@ public:
 	GraphNode* GetNode();
 	//cost of the edge
 	void SetCost(float cost);
-	float GetCost;
+	float GetCost();
 	~GraphEdge();
 private:
 	GraphNode * target;
-	float cost; 
+	float m_cost; 
 
 };
 

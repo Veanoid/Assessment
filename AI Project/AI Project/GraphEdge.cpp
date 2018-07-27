@@ -18,6 +18,12 @@ GraphNode * GraphEdge::GetNode()
 
 void GraphEdge::SetCost(float cost)
 {
+	m_cost = cost;
+}
+
+float GraphEdge::GetCost()
+{
+	return m_cost;
 }
 
 
