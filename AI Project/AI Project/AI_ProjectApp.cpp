@@ -21,12 +21,12 @@ bool AI_ProjectApp::startup() {
 
 	m_graph = new Graph();
 
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 25; i++)
 	{
-		for (int j = 0; j < 50; j++)
+		for (int j = 0; j < 25; j++)
 		{
 			GraphNode* yeet = new GraphNode(); 
-			yeet->SetPosition(Vector2(i * 32, j * 32));
+			yeet->SetPosition(Vector2(i * 64, j * 64));
 			m_graph->AddNode(yeet);
 		}
 	}
@@ -42,7 +42,7 @@ bool AI_ProjectApp::startup() {
 			Vector2 dist = y->GetPosition() - x->GetPosition();
 			float length = dist.magnitude();
 
-			if (length <= 50.0f)
+			if (length <= 70.0f)
 			{
 				// connect x and y node
 				m_graph->ConnectNode(x, y, length);
@@ -52,7 +52,10 @@ bool AI_ProjectApp::startup() {
 		}
 	}
 
-	auto path = m_graph->DjikstraSearch(m_graph->GetNodes()[0], m_graph->GetNodes()[40]);
+	auto startNode = m_graph->GetNodes()[0];
+	auto endNode = m_graph->GetNodes()[7];
+
+	auto path = m_graph->DjikstraSearch(startNode, endNode);
 
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"

@@ -66,14 +66,15 @@ float GraphNode::GetGScore()
 
 bool GraphNode::CompareGScore(GraphNode * a, GraphNode * b)
 {
-	if (a >  b )
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	//if (a > b)
+	//{
+	//	return true;
+	//}
+	//else
+	//{
+	//	return false;
+	//}
+	return a < b;
 }
 
 

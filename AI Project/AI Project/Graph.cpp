@@ -59,44 +59,57 @@ std::vector<GraphNode*> Graph::DjikstraSearch(GraphNode * startNode, GraphNode *
 	// set the startnode g-score to 0
 	startNode->SetGScore(0);
 
+	//startNode->SetVisited(true);
+
 	//while the queue is not empty
 	
 	while (!p_queue.empty())
 	{
 		p_queue.sort(GraphNode::CompareGScore);
 		// get current node off the end of the queue 
-		GraphNode* currentNode = p_queue.front();
+		auto currentNode = p_queue.front();
 		// and remove it
 		p_queue.pop_front();
+
 		if (currentNode == endNode)
 			break;
-		// mark it as travered
+
+		//// mark it as travered
 		currentNode->SetVisited(true);
 		//go through it's edges
-		for (auto e : currentNode->GetConnections())
+		for (auto connections : currentNode->GetConnections())
 		{	// if tareget node is not travered
-			if (!e->GetNode()->GetVisited())
+			auto target = connections->GetNode();
+			if (!target->GetVisited())
 			{
+				//target->SetVisited(true);
 				// calculate the current node's gScore with the egde cost
-				if (currentNode->GetGScore() + e->GetCost() < e->GetNode()->GetGScore());
+				if (currentNode->GetGScore() + connections->GetCost() < target->GetGScore());
 				{
 					// set target node's parent to the current 
-					e->GetNode()->SetParent(currentNode);
+					target->SetParent(currentNode);
 					// set targets Gscore to current gscore plus edge cost
-					e->GetNode()->SetGScore(currentNode->GetGScore() + e->GetCost());
+					target->SetGScore(currentNode->GetGScore() + connections->GetCost());
 					// if target node hasn't been in the queue 
-					if (!e->GetNode()->GetVisited())
-					{
+					//if (!target->GetVisited())
+					//{
 						// push target node into queue
-						p_queue.push_front(e->GetNode());
-					}
+						p_queue.push_back(target);
+					//}
 				}
 			}
 		}
 	}
 
+	std::vector<GraphNode*> path;
+	auto currentNode = endNode;
+	while (currentNode != nullptr)
+	{
+		path.push_back(currentNode);
+		currentNode = currentNode->GetParent();
+	}
 
-	return std::vector<GraphNode*>();
+	return path;
 }
 
 void Graph::draw(aie::Renderer2D * renderer)
