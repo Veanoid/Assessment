@@ -8,6 +8,8 @@ public:
 	Wander();
 	Wander(Agent* target, float distance, float radius, float amount);
 	virtual void update(Agent* agent, StateMachine* sm, float deltaTime);
+	virtual void init(Agent* agent) {}
+	virtual void exit(Agent* agent){}
 	void setAngle(Vector2 vec, float value);
 	~Wander();
 

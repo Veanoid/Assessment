@@ -1,7 +1,6 @@
 #pragma once
-#include "IBehaviour.h"
 #include "State.h"
-class StateMachine : public IBehaviour
+class StateMachine
 {
 public:
 	StateMachine();

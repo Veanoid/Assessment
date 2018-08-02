@@ -168,7 +168,9 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphEdge.cpp" />
     <ClCompile Include="GraphNode.cpp" />
+    <ClCompile Include="IdleBehavior.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PathBehaviour.cpp" />
     <ClCompile Include="Pursuit.cpp" />
     <ClCompile Include="Seekbehaviour.cpp" />
     <ClCompile Include="StateMachine.cpp" />
@@ -182,6 +184,8 @@
     <ClInclude Include="GraphEdge.h" />
     <ClInclude Include="GraphNode.h" />
     <ClInclude Include="IBehaviour.h" />
+    <ClInclude Include="IdleBehavior.h" />
+    <ClInclude Include="PathBehaviour.h" />
     <ClInclude Include="Pursuit.h" />
     <ClInclude Include="Seekbehaviour.h" />
     <ClInclude Include="State.h" />

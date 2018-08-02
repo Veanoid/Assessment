@@ -4,6 +4,8 @@
 #include "Input.h"
 #include "StateMachine.h"
 #include "Graph.h"
+#include "IdleBehavior.h"
+#include "Wander.h"
 
 AI_ProjectApp::AI_ProjectApp() {
 
@@ -55,17 +57,17 @@ bool AI_ProjectApp::startup() {
 	auto startNode = m_graph->GetNodes()[0];
 	auto endNode = m_graph->GetNodes()[7];
 
-	auto path = m_graph->DjikstraSearch(startNode, endNode);
+	std::vector<GraphNode*> path = m_graph->DjikstraSearch(startNode, endNode);
 
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
-	m_player = new Agent(new aie::Texture("../bin/textures/ship.png"),Vector2(100, 200));
-	m_gaurd = new Agent(new aie::Texture("../bin/textures/car.png"), Vector2(700, 200));
+	m_player = new Agent(new aie::Texture("../bin/textures/ship.png"),Vector2(100, 0));
+	m_gaurd = new Agent(new aie::Texture("../bin/textures/car.png"), Vector2(700, 700));
 	m_playerStateMachine->ChangeState(m_player, new Evade(m_gaurd));
-	m_enemySM->ChangeState(m_gaurd, new Pursuit(m_player));
-	m_player->Addbehaviour(m_playerStateMachine);
-	m_gaurd->Addbehaviour(m_enemySM);
+	m_enemySM->ChangeState(m_gaurd, new IdleBehavior(m_player));
+	m_player->AddStateMachine(m_playerStateMachine);
+	m_gaurd->AddStateMachine(m_enemySM);
 	return true;
 }
 

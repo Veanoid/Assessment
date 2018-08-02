@@ -2,6 +2,7 @@
 #include <Vector2.h>
 #include <vector>
 class IBehaviour;
+class StateMachine;
 namespace aie
 {
 	class Renderer2D;
@@ -17,6 +18,7 @@ public:
 	void update(float deltaTime);
 	void draw(aie::Renderer2D* renderer);
 	void Addbehaviour(IBehaviour* state);
+	void AddStateMachine(StateMachine* sm);
 	void Addforce(Vector2 force);
 	Vector2 position;
 	Vector2 velocity;
@@ -31,7 +33,7 @@ public:
 protected:
 	aie::Texture* texture;
 	std::vector<IBehaviour*> m_behaviours;
-	
+	StateMachine* fsm;
 	
 };
 
