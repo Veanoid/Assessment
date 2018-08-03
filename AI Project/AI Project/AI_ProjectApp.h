@@ -23,6 +23,7 @@ protected:
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
+	Agent*				m_Enity;
 	Agent*				m_player;
 	Agent*				m_gaurd;
 	StateMachine*		m_playerStateMachine;

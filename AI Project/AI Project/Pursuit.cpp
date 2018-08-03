@@ -1,4 +1,7 @@
 #include "Pursuit.h"
+#include "StateMachine.h"
+#include <Vector2.h>
+#include "IdleBehavior.h"
 
 
 
@@ -20,12 +23,19 @@ void Pursuit::update(Agent * agent, StateMachine * sm, float deltaTime)
 {
 	Vector2 desiredVe = target->position + target->velocity - agent->position;
 	desiredVe.normalise();
-	desiredVe = desiredVe * 50.0f;
+	desiredVe = desiredVe * 100.0f;
 	Vector2 force = desiredVe - agent->velocity;
 	agent->Addforce(force);
 
-	Vector2 distance = target->position - agent->position;
-	float length = distance.magnitude();
+	
+
+	Vector2 dist = target->Getpostion() - agent->Getpostion();
+	float mag = dist.magnitude();
+	if (mag > 100.0f)
+	{
+		sm->ChangeState(agent, new IdleBehavior(target));
+	}
+	
 }
 
 void Pursuit::init(Agent * agent)

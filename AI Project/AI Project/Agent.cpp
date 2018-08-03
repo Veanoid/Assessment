@@ -33,6 +33,13 @@ void Agent::update(float deltaTime)
 	//if (m_behaviours.size() > 0)
 	//	m_behaviours[0]->update(this, deltaTime);
 
+	// wrap though screen
+
+	if (position.m_x <= 0)
+	{
+		
+	}
+
 	if (fsm != nullptr)
 		fsm->update(this, deltaTime);
 }

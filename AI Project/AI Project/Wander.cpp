@@ -1,9 +1,11 @@
 #include "Wander.h"
 #include <random>
 #include <time.h>
-#include "Pursuit.h"
+#include "Seekbehaviour.h"
 #include "StateMachine.h"
 #include <glm\ext.hpp>
+#include "Evade.h"
+#include <Vector2.h>
 
 
 
@@ -38,12 +40,12 @@ void Wander::update(Agent * agent, StateMachine * sm, float deltaTime)
 
 	agent->Addforce(force);
 
-	// Vector2 dist = m_target->Getpostion() - agent->Getpostion();
-	// float mag = dist.magnitude();
-	// if (mag < 100.0f)
-	// {
-	// 	sm->ChangeState(agent, new Pursuit(m_target));
-	// }
+	 Vector2 dist = m_target->Getpostion() - agent->Getpostion();
+	 float mag = dist.magnitude();
+	 if (mag < 100.0f)
+	 {
+	 	sm->ChangeState(agent, new Evade(m_target));
+	 }
 }
 
 void Wander::setAngle(Vector2 vec, float value)

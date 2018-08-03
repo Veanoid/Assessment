@@ -1,5 +1,7 @@
 #include "Seekbehaviour.h"
 #include <Vector2.h>
+#include "StateMachine.h"
+#include "Evade.h"
 
 
 
@@ -17,7 +19,7 @@ Seekbehaviour::~Seekbehaviour()
 	delete target;
 }
 
-void Seekbehaviour::update(float deltaTime, Agent* agent)
+void Seekbehaviour::update(Agent* agent, StateMachine* sm, float deltaTime)
 {
 	Vector2 desiredVel = target->position - agent->position;
 	desiredVel.normalise();
@@ -25,5 +27,11 @@ void Seekbehaviour::update(float deltaTime, Agent* agent)
 	Vector2 force = desiredVel - agent->velocity;
 	agent->Addforce(force);
 
-}
+	Vector2 dist = target->Getpostion() - agent->Getpostion();
+	float mag = dist.magnitude();
+	if (mag < 100.0f)
+	{
+		sm->ChangeState(agent, new Evade(target));
+	}
 
+}
