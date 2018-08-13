@@ -8,11 +8,12 @@
 #include "Patrole.h"
 
 
+
 class EnemyState
 {
 public:
 	EnemyState();
-	EnemyState(Agent* target, Agent* protect);
+	EnemyState(Agent* target, Agent* protect, Agent* self);
 	virtual void update(Agent* agent, StateMachine* sm, float deltaTime);
 	virtual void init(Agent* agent) {}
 	virtual void exit(Agent* agent) {}
@@ -22,5 +23,6 @@ private:
 
 	Agent* m_target;
 	Agent* m_protect;
+	Agent* m_Agent;
 };
 

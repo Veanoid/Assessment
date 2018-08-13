@@ -10,14 +10,15 @@ class PlayerState
 {
 public:
 	PlayerState();
-	PlayerState(Agent* target, Agent* destroy);
+	PlayerState(Agent* target, Agent* destroy, Agent* self);
 	virtual void update(Agent* agent, StateMachine* sm, float deltaTime);
 	virtual void init(Agent* agent) {}
 	virtual void exit(Agent* agent) {}
 	~PlayerState();
 
 private:
-	Agent * m_target;
-	Agent * m_destroy;
+	Agent* m_target;
+	Agent* m_destroy;
+	Agent* m_Agent;
 };
 
