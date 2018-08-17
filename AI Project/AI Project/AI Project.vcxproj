@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="AI_ProjectApp.cpp" />
+    <ClCompile Include="EnemyState.cpp" />
     <ClCompile Include="Evade.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphEdge.cpp" />
@@ -171,6 +172,8 @@
     <ClCompile Include="IdleBehavior.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PathBehaviour.cpp" />
+    <ClCompile Include="Patrole.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
     <ClCompile Include="Pursuit.cpp" />
     <ClCompile Include="Seekbehaviour.cpp" />
     <ClCompile Include="StateMachine.cpp" />
@@ -179,6 +182,7 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AI_ProjectApp.h" />
+    <ClInclude Include="EnemyState.h" />
     <ClInclude Include="Evade.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphEdge.h" />
@@ -186,6 +190,8 @@
     <ClInclude Include="IBehaviour.h" />
     <ClInclude Include="IdleBehavior.h" />
     <ClInclude Include="PathBehaviour.h" />
+    <ClInclude Include="Patrole.h" />
+    <ClInclude Include="PlayerState.h" />
     <ClInclude Include="Pursuit.h" />
     <ClInclude Include="Seekbehaviour.h" />
     <ClInclude Include="State.h" />

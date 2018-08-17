@@ -63,9 +63,10 @@ bool AI_ProjectApp::startup() {
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
+	m_Enity = new Agent(new aie::Texture("../bin/textures/rock_small.png"), Vector2(580, 387));
 	m_player = new Agent(new aie::Texture("../bin/textures/ship.png"),Vector2(100, 100));
 	m_gaurd = new Agent(new aie::Texture("../bin/textures/car.png"), Vector2(700, 300));
-	m_playerStateMachine->ChangeState(m_player, new PathBehaviour(path));
+	m_playerStateMachine->ChangeState(m_player, new Wander(m_gaurd, 100, 100, 1));
 	m_enemySM->ChangeState(m_gaurd, new IdleBehavior(m_player));
 	m_player->AddStateMachine(m_playerStateMachine);
 	m_gaurd->AddStateMachine(m_enemySM);
@@ -102,9 +103,10 @@ void AI_ProjectApp::draw() {
 	m_2dRenderer->begin();
 
 	// draw your stuff here!
+	m_graph->draw(m_2dRenderer);
 	m_player->draw(m_2dRenderer);
 	m_gaurd->draw(m_2dRenderer);
-	m_graph->draw(m_2dRenderer);
+	m_Enity->draw(m_2dRenderer);
 
 	// output some text, uses the last used colour
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
