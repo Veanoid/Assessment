@@ -29,16 +29,5 @@ void Seekbehaviour::update(Agent* agent, StateMachine* sm, float deltaTime)
 	Vector2 force = desiredVel - agent->velocity;
 	agent->Addforce(force);
 
-	//state transion rule 
-	Vector2 dist = target->Getpostion() - agent->Getpostion();
-	float mag = dist.magnitude();
-	if (mag < 100.0f)
-	{
-		sm->ChangeState(agent, new Evade(target));
-	}
-	if (mag < 100.0f)
-	{
-		sm->ChangeState(agent, new Patrole(target));
-	}
 
 }

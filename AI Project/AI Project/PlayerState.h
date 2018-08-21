@@ -1,16 +1,10 @@
 #pragma once
 #include "State.h"
-#include "Seekbehaviour.h"
-#include "Pursuit.h"
-#include "Wander.h"
-#include "IdleBehavior.h"
-#include "Evade.h"
-#include "Patrole.h"
-class PlayerState
+class PlayerState : public state
 {
 public:
 	PlayerState();
-	PlayerState(Agent* target, Agent* destroy, Agent* self);
+	PlayerState(Agent* target, Agent* destroy);
 	virtual void update(Agent* agent, StateMachine* sm, float deltaTime);
 	virtual void init(Agent* agent) {}
 	virtual void exit(Agent* agent) {}
@@ -19,6 +13,6 @@ public:
 private:
 	Agent* m_target;
 	Agent* m_destroy;
-	Agent* m_Agent;
+	state* m_current;
 };
 

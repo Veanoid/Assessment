@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-class Patrole
+class Patrole : public state
 {
 public:
 	Patrole();
@@ -23,7 +23,7 @@ private:
 
 	Vector2 randomVec;
 	Agent * m_target;
-	Agent* m_target;
+	//Agent* m_target;
 	Agent* m_protect;
 };
 
