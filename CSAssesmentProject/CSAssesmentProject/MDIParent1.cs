@@ -103,5 +103,23 @@ namespace CSAssesmentProject
                 childForm.Close();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                if (ofd.CheckFileExists == true)
+                {
+                    
+                }
+            }
+
+            Storage s = new Storage();
+            //s.Image = ;
+            s.pos = new Point(0, 0);
+            listBox1.Items.Add(s);
+        }
     }
 }
