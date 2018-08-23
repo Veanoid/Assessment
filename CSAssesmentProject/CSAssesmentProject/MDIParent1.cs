@@ -106,20 +106,34 @@ namespace CSAssesmentProject
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            listBox1.MultiColumn = true;
+
+            listBox1.SelectionMode = SelectionMode.MultiExtended;
+
             OpenFileDialog ofd = new OpenFileDialog();
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 if (ofd.CheckFileExists == true)
                 {
+                    Storage s = new Storage();
+                  
+                    s.pos = new Point(0, 0);
+                    //s.name = new String(textBox1.Text);
+                    listBox1.DisplayMember = "text field name";
+                    listBox1.Items.Add(s);
                     
                 }
             }
 
-            Storage s = new Storage();
-            //s.Image = ;
-            s.pos = new Point(0, 0);
-            listBox1.Items.Add(s);
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = listBox1.
         }
     }
 }

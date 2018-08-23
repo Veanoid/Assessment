@@ -9,7 +9,20 @@ namespace CSAssesmentProject
 {
     class Storage
     {
-        public Bitmap Image;
-        public Point pos;
+        public Bitmap Image
+        {
+            get;
+            set;
+        }
+        public Point pos
+        {
+            get;
+            set;
+        }
+        public string name
+        {
+            get;
+            set;
+        }
     }
 }
