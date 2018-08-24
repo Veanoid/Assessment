@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +14,12 @@ namespace CSAssesmentProject
     public partial class MDIParent1 : Form
     {
         private int childFormNumber = 0;
+        Bitmap drawArea;
 
         public MDIParent1()
         {
             InitializeComponent();
+            drawArea = new Bitmap(pictureBox1.Width, pictureBox1.Height);
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -103,7 +106,7 @@ namespace CSAssesmentProject
                 childForm.Close();
             }
         }
-
+        // adding the image into the listbox
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -118,22 +121,35 @@ namespace CSAssesmentProject
                 if (ofd.CheckFileExists == true)
                 {
                     Storage s = new Storage();
-                  
+                    s.name = Path.GetFileName(ofd.FileName);
                     s.pos = new Point(0, 0);
+                    s.Image = new Bitmap(ofd.FileName);
                     //s.name = new String(textBox1.Text);
-                    listBox1.DisplayMember = "text field name";
+                    //listBox1.DisplayMember = "FileName";
                     listBox1.Items.Add(s);
-                    
                 }
             }
-
-
-
         }
-
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+      
+        }
+        // adding the image to the picutebox
         private void button2_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = listBox1.
+            Graphics g = Graphics.FromImage(drawArea);
+            Storage s = null;
+            for (int i = 0; i < listBox1.Items.Count; ++i)
+            {
+                s = (Storage)listBox1.SelectedItem;
+            }
+            g.DrawImage(s.Image, s.pos);
+            pictureBox1.Image = drawArea;
+        }
+        //remove the image from the listbox
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
