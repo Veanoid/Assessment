@@ -14,6 +14,6 @@ private:
 
 	Agent* m_target;
 	Agent* m_protect;
-	state* m_curent;
+	state* m_current;
 };
 
