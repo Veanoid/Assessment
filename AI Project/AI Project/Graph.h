@@ -1,6 +1,7 @@
 #pragma once
 #include "GraphEdge.h"
 #include "GraphNode.h"
+#include "Agent.h"
 
 namespace aie{
 	class Renderer2D;
@@ -16,6 +17,7 @@ public:
 	std::vector<GraphEdge*> DFS(GraphNode* startNode, GraphNode* endNode); // Depth First Search = DFS
 	std::vector<GraphNode*> BFS(GraphNode* startNode, GraphNode* endNode); // Breadth first search = BFS
 	std::vector<GraphNode*> DjikstraSearch(GraphNode* startNode, GraphNode* endNode); // Djikstra
+	GraphNode* FindNode(Agent* agent);
 	void draw(aie::Renderer2D* renderer);// draws the node
 	~Graph();
 private:

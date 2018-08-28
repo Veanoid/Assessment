@@ -43,7 +43,7 @@ std::vector<GraphNode*> Graph::DjikstraSearch(GraphNode * startNode, GraphNode *
 		// Set all the nodes parents to be null
 
 		n->SetParent(nullptr);
-
+		n->SetVisited(false);
 		// set all gscores to Infinity
 
 		n->SetGScore(INFINITY);
@@ -84,7 +84,7 @@ std::vector<GraphNode*> Graph::DjikstraSearch(GraphNode * startNode, GraphNode *
 			{
 				//target->SetVisited(true);
 				// calculate the current node's gScore with the egde cost
-				if (currentNode->GetGScore() + connections->GetCost() < target->GetGScore());
+				if (currentNode->GetGScore() + connections->GetCost() < target->GetGScore())
 				{
 					// set target node's parent to the current 
 					target->SetParent(currentNode);
@@ -110,6 +110,35 @@ std::vector<GraphNode*> Graph::DjikstraSearch(GraphNode * startNode, GraphNode *
 	}
 
 	return path;
+}
+
+GraphNode * Graph::FindNode(Agent* agent)
+{
+	// for loop to iterate through the list of nodes
+
+	GraphNode* closestNode = nullptr;
+	float currentClosestDistance = 10000000.0f;
+
+	for (auto n : m_nodes)
+	{
+		// find the length between the current node and the target position
+		Vector2 offset = n->GetPosition() - agent->Getpostion();
+		float length = offset.magnitude();
+		// if the length is less than 10
+		//if (length < 15.0f)
+		//{
+		//	// reuturn the node
+		//	return n;
+		//}
+		if (length < currentClosestDistance)
+		{
+			closestNode = n;
+			currentClosestDistance = length;
+		}
+
+	}
+
+	return closestNode;
 }
 
 void Graph::draw(aie::Renderer2D * renderer)

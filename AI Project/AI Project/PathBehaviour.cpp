@@ -5,6 +5,7 @@
 
 PathBehaviour::PathBehaviour()
 {
+	m_type = StateType::PathBehavior;
 }
 
 PathBehaviour::PathBehaviour(std::vector<GraphNode*> path)
@@ -20,7 +21,7 @@ void PathBehaviour::update(Agent * agent, StateMachine * sm, float deltaTime)
 		// store the end node in target node
 		GraphNode* targetNode = m_path.back();
 
-
+		//getting the distant from agent to target
 		Vector2 desiredVel = targetNode->GetPosition() - agent->Getpostion();
 		Vector2 distance = desiredVel;
 		desiredVel.normalise();
@@ -28,8 +29,9 @@ void PathBehaviour::update(Agent * agent, StateMachine * sm, float deltaTime)
 		Vector2 force = desiredVel - agent->velocity;
 		agent->Addforce(force);
 
+		// popping the back of the list until it gets to it's target
 		float mag = distance.magnitude();
-		if (mag < 10.0f)
+		if (mag < 20.0f)
 		{
 			m_path.pop_back();
 		}

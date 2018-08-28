@@ -65,7 +65,7 @@ bool AI_ProjectApp::startup() {
 	m_Enity = new Agent(new aie::Texture("../bin/textures/rock_small.png"), Vector2(580, 387));
 	m_player = new Agent(new aie::Texture("../bin/textures/ship.png"),Vector2(100, 100));
 	m_gaurd = new Agent(new aie::Texture("../bin/textures/car.png"), Vector2(700, 300));
-	m_playerStateMachine->ChangeState(m_player, new PlayerState(m_gaurd, m_Enity));
+	m_playerStateMachine->ChangeState(m_player, new PlayerState(m_gaurd, m_Enity, m_graph, m_player));
 	m_enemySM->ChangeState(m_gaurd, new EnemyState(m_player, m_Enity));
 	m_player->AddStateMachine(m_playerStateMachine);
 	m_gaurd->AddStateMachine(m_enemySM);

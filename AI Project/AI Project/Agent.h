@@ -20,6 +20,7 @@ public:
 	void Addbehaviour(IBehaviour* state);
 	void AddStateMachine(StateMachine* sm);
 	void Addforce(Vector2 force);
+	//void GetNextNode(std::vector<GraphNode*> path);
 	Vector2 position;
 	Vector2 velocity;
 	Vector2 acceleration;
@@ -34,6 +35,7 @@ protected:
 	aie::Texture* texture;
 	std::vector<IBehaviour*> m_behaviours;
 	StateMachine* fsm;
+	//std::vector<GraphNode*> m_path;
 	
 };
 

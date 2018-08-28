@@ -15,7 +15,7 @@ EnemyState::EnemyState(Agent * target, Agent * protect)
 {
 	this->m_target = target;
 	this->m_protect = protect;
-	m_current = new IdleBehavior();
+	m_current = new IdleBehavior(m_target);
 }
 
 
@@ -28,13 +28,13 @@ void EnemyState::update(Agent * agent, StateMachine * sm, float deltaTime)
 	Vector2 distance = m_target->position - agent->position;
 	float length = distance.magnitude();
 
-	if (length < 200.0f && lnth > 200.0f)
+	if (length > 200.0f && lnth < 200.0f)
 	{
 		// set the current state to Patrole
 		delete m_current;
 		m_current = new Wander(m_target, 50, 1, 1);
 	}
-	if (length > 200.0f && lnth > 200.0f)
+	if (length < 200.0f && lnth < 200.0f)
 	{
 		// set the current state to Seeking the target
 		delete m_current;
@@ -46,7 +46,7 @@ void EnemyState::update(Agent * agent, StateMachine * sm, float deltaTime)
 		delete m_current;
 		m_current = new Seekbehaviour(m_protect);
 	}
-	//m_current->update(agent, sm, deltaTime);
+	m_current->update(agent, sm, deltaTime);
 }
 
 

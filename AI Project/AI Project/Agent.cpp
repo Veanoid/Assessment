@@ -2,6 +2,7 @@
 #include <Renderer2D.h>
 #include"IBehaviour.h"
 #include "StateMachine.h"
+#include "GraphNode.h"
 
 Agent::Agent()
 {
@@ -64,6 +65,14 @@ void Agent::Addforce(Vector2 force)
 {
 	acceleration = acceleration + force;
 }
+
+//void Agent::GetNextNode(std::vector<GraphNode*> path)
+//{
+//	//m_path = path;
+//
+//	//GraphNode* targetNode = m_path.back();
+//	
+//}
 
 Vector2 Agent::Getpostion()
 {

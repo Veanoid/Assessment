@@ -6,6 +6,7 @@
 
 Evade::Evade()
 {
+	m_type = StateType::Evade;
 }
 
 Evade::Evade(Agent * target)
@@ -26,12 +27,7 @@ void Evade::update(Agent * agent, StateMachine* sm, float deltaTime)
 	Vector2 force = desiredVel - agent->velocity;
 	agent->Addforce(force);
 
-	Vector2 dist = target->Getpostion() - agent->Getpostion();
-	float mag = dist.magnitude();
-	if (mag > 100.0f)
-	{
-		sm->ChangeState(agent, new Wander(target, 200, 100, 1));
-	}
+	
 }
 
 void Evade::init(Agent * agent)
