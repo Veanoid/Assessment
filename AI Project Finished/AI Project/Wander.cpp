@@ -22,6 +22,8 @@ Wander::Wander(Agent * target, float distance, float radius, float amount)
 
 	randomVec = Vector2(rand() % (int)m_amount, rand() % (int)m_amount);
 	m_target = target;
+	m_type = StateType::Wander;
+
 }
 
 void Wander::update(Agent * agent, StateMachine * sm, float deltaTime)

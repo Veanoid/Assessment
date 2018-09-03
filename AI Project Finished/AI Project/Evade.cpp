@@ -12,6 +12,7 @@ Evade::Evade()
 Evade::Evade(Agent * target)
 {
 	this->target = target;
+	m_type = StateType::Evade;
 }
 
 

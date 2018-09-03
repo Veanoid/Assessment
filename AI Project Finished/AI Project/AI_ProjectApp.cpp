@@ -79,7 +79,7 @@ void AI_ProjectApp::shutdown() {
 }
 
 void AI_ProjectApp::update(float deltaTime) {
-
+	if (deltaTime > 0.1f) deltaTime = 0.1f;
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 

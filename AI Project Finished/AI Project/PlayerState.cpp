@@ -46,7 +46,7 @@ void PlayerState::update(Agent * agent, StateMachine * sm, float deltaTime)
 		delete m_current;
 		m_current = new Evade(m_target);
 	}
-	if (lnth < 2000.0f && length > 200.0 && m_current->getType() != state::StateType::PathBehavior)
+	if (lnth < 200.0f && length > 200.0 && m_current->getType() != state::StateType::PathBehavior)
 	{
 		// set the current state to Seek
 		delete m_current;

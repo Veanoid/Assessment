@@ -11,6 +11,7 @@ PathBehaviour::PathBehaviour()
 PathBehaviour::PathBehaviour(std::vector<GraphNode*> path)
 {
 	m_path = path;
+	m_type = StateType::PathBehavior;
 }
 
 void PathBehaviour::update(Agent * agent, StateMachine * sm, float deltaTime)

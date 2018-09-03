@@ -68,9 +68,9 @@ void Agent::Addforce(Vector2 force)
 
 //void Agent::GetNextNode(std::vector<GraphNode*> path)
 //{
-//	//m_path = path;
+//	m_path = path;
 //
-//	//GraphNode* targetNode = m_path.back();
+//	GraphNode* targetNode = m_path.back();
 //	
 //}
 
