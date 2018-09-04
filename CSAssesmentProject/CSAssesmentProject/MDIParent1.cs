@@ -16,10 +16,19 @@ namespace CSAssesmentProject
         private int childFormNumber = 0;
         Bitmap drawArea;
 
+        Storage demoStorage;
+
         public MDIParent1()
         {
             InitializeComponent();
             drawArea = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+
+            demoStorage = new Storage();
+            demoStorage.pos = new Point(10, 10);
+            demoStorage.size = new Size(20, 20);
+
+            textBox2.Text = demoStorage.pos.X.ToString();
+            textBox3.Text = demoStorage.pos.Y.ToString();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -146,10 +155,82 @@ namespace CSAssesmentProject
             g.DrawImage(s.Image, s.pos);
             pictureBox1.Image = drawArea;
         }
-        //remove the image from the listbox
+        // Delete the sleceted image from the listbox
         private void button3_Click(object sender, EventArgs e)
         {
+            for (int i = listBox1.SelectedIndices.Count-1; i >= 0; i--)
+            {
+            listBox1.Items.RemoveAt(listBox1.SelectedIndices[i]);
 
+            }
+        }
+        // able to move the image around in the picture box 
+        private void pictureBox1_DragDrop(object sender, DragEventArgs e)
+        {
+        }
+
+        private void listBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            int x = this.PointToClient(new Point(e.X,e.Y)).X;
+            int y = this.PointToClient(new Point(e.X, e.Y)).Y;
+
+            if(x >= pictureBox1.Location.X && x <= pictureBox1.Location.X + pictureBox1.Width && y >= pictureBox1.Location.Y && y <= pictureBox1.Location.Y + pictureBox1.Height)
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                pictureBox1.Image = Image.FromFile(files[0]);
+            }
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox2.Text != "")
+            {
+                Point p = demoStorage.pos;
+                p.X = int.Parse(textBox2.Text);
+                demoStorage.pos = p;
+
+                pictureBox1.Invalidate();
+
+            }
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.LawnGreen, 10), new Rectangle(demoStorage.pos, new Size(20, 20)));
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox3.Text != "")
+            {
+                Point p = demoStorage.pos;
+                p.Y = int.Parse(textBox3.Text);
+                demoStorage.pos = p;
+
+                pictureBox1.Invalidate();
+
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox4.Text != "")
+            {
+                Size s = demoStorage.size;
+                s.Height = int.Parse(textBox4.Text);
+                demoStorage.size = s;
+            }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox5.Text != "")
+            {
+                Size s = demoStorage.size;
+                s.Width = int.Parse(textBox5.Text);
+                demoStorage.size = s;
+            }
         }
     }
 }

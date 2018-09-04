@@ -24,5 +24,11 @@ namespace CSAssesmentProject
             get;
             set;
         }
+        public Size size
+        {
+            get;
+            set;
+
+        }
     }
 }
