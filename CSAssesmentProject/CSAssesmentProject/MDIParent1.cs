@@ -213,24 +213,6 @@ namespace CSAssesmentProject
             }
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            if (textBox4.Text != "")
-            {
-                Size s = demoStorage.size;
-                s.Height = int.Parse(textBox4.Text);
-                demoStorage.size = s;
-            }
-        }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            if (textBox5.Text != "")
-            {
-                Size s = demoStorage.size;
-                s.Width = int.Parse(textBox5.Text);
-                demoStorage.size = s;
-            }
-        }
     }
 }
