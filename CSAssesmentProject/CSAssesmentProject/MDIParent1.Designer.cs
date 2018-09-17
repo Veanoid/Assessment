@@ -642,6 +642,7 @@
             this.Remove.TabIndex = 17;
             this.Remove.Text = "Remove";
             this.Remove.UseVisualStyleBackColor = true;
+            this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
             // listBox2
             // 

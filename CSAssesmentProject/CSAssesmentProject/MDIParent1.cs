@@ -133,6 +133,7 @@ namespace CSAssesmentProject
                     s.name = Path.GetFileName(ofd.FileName);
                     s.pos = new Point(0, 0);
                     s.Image = new Bitmap(ofd.FileName);
+                    s.size = s.Image.Size;
                     //s.name = new String(textBox1.Text);
                     //listBox1.DisplayMember = "FileName";
                     listBox1.Items.Add(s);
@@ -154,6 +155,7 @@ namespace CSAssesmentProject
             }
             g.DrawImage(s.Image, s.pos);
             pictureBox1.Image = drawArea;
+            listBox2.Items.Add(g);
         }
         // Delete the sleceted image from the listbox
         private void button3_Click(object sender, EventArgs e)
@@ -181,7 +183,7 @@ namespace CSAssesmentProject
             }
 
         }
-
+        // moving the imagealong the X axis around with Textbox
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if(textBox2.Text != "")
@@ -197,9 +199,9 @@ namespace CSAssesmentProject
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(new Pen(Color.LawnGreen, 10), new Rectangle(demoStorage.pos, new Size(20, 20)));
+           // e.Graphics.DrawRectangle(new Pen(Color.LawnGreen, 10), new Rectangle(demoStorage.pos, new Size(20, 20)));
         }
-
+        // moving the imagealong the Y axis around with Textbox
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             if (textBox3.Text != "")
@@ -212,7 +214,23 @@ namespace CSAssesmentProject
 
             }
         }
-
-
+        // remove image from listbox and picturebox
+        private void Remove_Click(object sender, EventArgs e)
+        {
+            for (int i = listBox2.SelectedIndices.Count - 1; i >= 0; i--)
+            {
+                listBox2.Items.RemoveAt(listBox2.SelectedIndices[i]);
+                Graphics g = Graphics.FromImage(drawArea);
+                Storage s = null;
+                for (int j = 0; j < listBox1.Items.Count; ++j)
+                {
+                    s = (Storage)listBox1.SelectedItem;
+                }
+                Brush white = new SolidBrush(Color.White);
+                Pen whitePen = new Pen(white);
+                g.DrawRectangle(whitePen, new Rectangle(s.pos.X, s.pos.Y, s.size.Width, s.size.Height));
+                pictureBox1.Invalidate();
+            }
+        }
     }
 }
