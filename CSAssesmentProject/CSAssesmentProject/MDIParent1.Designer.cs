@@ -86,20 +86,15 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.Import = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Delete = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
             this.Load = new System.Windows.Forms.Button();
             this.Remove = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -578,34 +573,6 @@
             this.Add.UseVisualStyleBackColor = true;
             this.Add.Click += new System.EventHandler(this.button2_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(215, 74);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(762, 438);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(995, 114);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "X postion";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(995, 146);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Y Postion";
-            // 
             // Delete
             // 
             this.Delete.Location = new System.Drawing.Point(93, 74);
@@ -636,7 +603,7 @@
             // 
             // Remove
             // 
-            this.Remove.Location = new System.Drawing.Point(983, 191);
+            this.Remove.Location = new System.Drawing.Point(986, 74);
             this.Remove.Name = "Remove";
             this.Remove.Size = new System.Drawing.Size(75, 23);
             this.Remove.TabIndex = 17;
@@ -647,42 +614,29 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(986, 220);
+            this.listBox2.Location = new System.Drawing.Point(986, 103);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(157, 264);
+            this.listBox2.Size = new System.Drawing.Size(157, 381);
             this.listBox2.TabIndex = 19;
             // 
-            // textBox2
+            // panel1
             // 
-            this.textBox2.Location = new System.Drawing.Point(1053, 111);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 20;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(1053, 146);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 21;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.panel1.Location = new System.Drawing.Point(213, 74);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(764, 438);
+            this.panel1.TabIndex = 23;
             // 
             // MDIParent1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 561);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.Remove);
             this.Controls.Add(this.Load);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.Delete);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.Import);
             this.Controls.Add(this.listBox1);
@@ -699,7 +653,6 @@
             this.toolStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -762,17 +715,13 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button Import;
         private System.Windows.Forms.Button Add;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Button Load;
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

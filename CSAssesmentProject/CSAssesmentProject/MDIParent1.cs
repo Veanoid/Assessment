@@ -13,22 +13,17 @@ namespace CSAssesmentProject
 {
     public partial class MDIParent1 : Form
     {
-        private int childFormNumber = 0;
-        Bitmap drawArea;
+        public List<PictureBox> PicArray;
 
-        Storage demoStorage;
+        private int childFormNumber = 0;
+       
+
+       
 
         public MDIParent1()
         {
             InitializeComponent();
-            drawArea = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-
-            demoStorage = new Storage();
-            demoStorage.pos = new Point(10, 10);
-            demoStorage.size = new Size(20, 20);
-
-            textBox2.Text = demoStorage.pos.X.ToString();
-            textBox3.Text = demoStorage.pos.Y.ToString();
+            PicArray = new List<PictureBox>();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -134,8 +129,6 @@ namespace CSAssesmentProject
                     s.pos = new Point(0, 0);
                     s.Image = new Bitmap(ofd.FileName);
                     s.size = s.Image.Size;
-                    //s.name = new String(textBox1.Text);
-                    //listBox1.DisplayMember = "FileName";
                     listBox1.Items.Add(s);
                 }
             }
@@ -147,22 +140,26 @@ namespace CSAssesmentProject
         // adding the image to the picutebox
         private void button2_Click(object sender, EventArgs e)
         {
-            Graphics g = Graphics.FromImage(drawArea);
+
+            PictureBox p = new PictureBox();
+            p.Parent = panel1;
+            PicArray.Add(p);
+
             Storage s = null;
-            for (int i = 0; i < listBox1.Items.Count; ++i)
-            {
-                s = (Storage)listBox1.SelectedItem;
-            }
-            g.DrawImage(s.Image, s.pos);
-            pictureBox1.Image = drawArea;
-            listBox2.Items.Add(g);
+        
+                s =(Storage)listBox1.SelectedItems; 
+
+            p.Image = s.Image;
+
+
+           
         }
         // Delete the sleceted image from the listbox
         private void button3_Click(object sender, EventArgs e)
         {
             for (int i = listBox1.SelectedIndices.Count-1; i >= 0; i--)
             {
-            listBox1.Items.RemoveAt(listBox1.SelectedIndices[i]);
+             listBox1.Items.RemoveAt(listBox1.SelectedIndices[i]);
 
             }
         }
@@ -176,60 +173,27 @@ namespace CSAssesmentProject
             int x = this.PointToClient(new Point(e.X,e.Y)).X;
             int y = this.PointToClient(new Point(e.X, e.Y)).Y;
 
-            if(x >= pictureBox1.Location.X && x <= pictureBox1.Location.X + pictureBox1.Width && y >= pictureBox1.Location.Y && y <= pictureBox1.Location.Y + pictureBox1.Height)
-            {
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                pictureBox1.Image = Image.FromFile(files[0]);
-            }
+         
 
         }
         // moving the imagealong the X axis around with Textbox
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            if(textBox2.Text != "")
-            {
-                Point p = demoStorage.pos;
-                p.X = int.Parse(textBox2.Text);
-                demoStorage.pos = p;
-
-                pictureBox1.Invalidate();
-
-            }
-        }
+     
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
            // e.Graphics.DrawRectangle(new Pen(Color.LawnGreen, 10), new Rectangle(demoStorage.pos, new Size(20, 20)));
         }
         // moving the imagealong the Y axis around with Textbox
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            if (textBox3.Text != "")
-            {
-                Point p = demoStorage.pos;
-                p.Y = int.Parse(textBox3.Text);
-                demoStorage.pos = p;
-
-                pictureBox1.Invalidate();
-
-            }
-        }
+     
         // remove image from listbox and picturebox
         private void Remove_Click(object sender, EventArgs e)
         {
             for (int i = listBox2.SelectedIndices.Count - 1; i >= 0; i--)
             {
                 listBox2.Items.RemoveAt(listBox2.SelectedIndices[i]);
-                Graphics g = Graphics.FromImage(drawArea);
-                Storage s = null;
-                for (int j = 0; j < listBox1.Items.Count; ++j)
-                {
-                    s = (Storage)listBox1.SelectedItem;
-                }
-                Brush white = new SolidBrush(Color.White);
-                Pen whitePen = new Pen(white);
-                g.DrawRectangle(whitePen, new Rectangle(s.pos.X, s.pos.Y, s.size.Width, s.size.Height));
-                pictureBox1.Invalidate();
+               
+               
+              
             }
         }
     }
